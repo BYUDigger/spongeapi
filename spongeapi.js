@@ -312,8 +312,10 @@ handleSetupResponse = function(message) {
   spongeapi.initComplete = true;
 }
 window.addEventListener('message', function(event) {
-  var message = event.data;
-  if (message) {
-  eval(message.callback)(message.data);
+  if (event){
+    var message = event.data;
+    if (message && message.callback) {
+      eval(message.callback)(message.data);
+    }
   }
 });
